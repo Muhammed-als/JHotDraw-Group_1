@@ -2,6 +2,8 @@ package org.jhotdraw.draw.action;
 
 import java.awt.geom.*;
 import java.util.*;
+
+import dk.sdu.mmmi.featuretracer.lib.FeatureEntryPoint;
 import org.jhotdraw.draw.DrawingEditor;
 import org.jhotdraw.draw.figure.Figure;
 import org.jhotdraw.draw.event.TransformEdit;
@@ -44,6 +46,7 @@ public class AlignAction extends AbstractSelectedAction {
         setEnabled(getView() != null && getView().isEnabled() && getView().getSelectionCount() > 1);
     }
 
+    @FeatureEntryPoint(value = "align")
     @Override
     public void actionPerformed(java.awt.event.ActionEvent e) {
         CompositeEdit compositeEdit = new CompositeEdit(labels.getString("edit.align.text"));
@@ -60,7 +63,7 @@ public class AlignAction extends AbstractSelectedAction {
         }
     }
 
-    private Point2D.Double calculateAlignmentDelta(Rectangle2D.Double figureBounds, Rectangle2D.Double selectionBounds) {
+    Point2D.Double calculateAlignmentDelta(Rectangle2D.Double figureBounds, Rectangle2D.Double selectionBounds) {
         double deltaX = 0;
         double deltaY = 0;
 
